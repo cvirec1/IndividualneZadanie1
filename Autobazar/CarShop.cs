@@ -284,7 +284,6 @@ namespace Autobazar
             }                
             
         }
-
         public static bool SaveControl()
         {
             bool answer = false;
@@ -319,7 +318,6 @@ namespace Autobazar
             } while (!success);
             return answer;
         }
-
         /// <summary>
         /// Metóda na načítanie dát z textového súboru.
         /// </summary>
