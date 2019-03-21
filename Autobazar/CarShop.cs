@@ -77,7 +77,6 @@ namespace Autobazar
                 }
             } while (!success);
             return number;
-
         }
 
         public static decimal OverDecimalVstup(string popis)
