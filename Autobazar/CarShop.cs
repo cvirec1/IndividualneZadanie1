@@ -49,6 +49,7 @@ namespace Autobazar
                 Console.Write(popis);
                 text = Console.ReadLine();
             } while (text == "");
+            text = text.ToLower();
             return text;
         }
 
@@ -111,58 +112,43 @@ namespace Autobazar
                         switch (vyber)
                         {
                             case 'R':
-                                {
-                                    Console.WriteLine($"Zadaj rok výroby: ");
-                                    c.RokVyroby = int.Parse(Console.ReadLine());
-                                    success = true;
+                                {                                    
+                                    c.RokVyroby = OverIntVstup($"Zadaj rok výroby: ");                                    
                                     break;
                                 }
                             case 'K':
-                                {
-                                    Console.WriteLine($"Zadaj počet km: ");
-                                    c.PocetKm = int.Parse(Console.ReadLine());
-                                    success = true;
+                                {                                    
+                                    c.PocetKm = OverIntVstup($"Zadaj počet km: ");                                    
                                     break;
                                 }
                             case 'Z':
                                 {
-                                    Console.WriteLine($"Zadaj značku: ");
-                                    c.Znacka = Console.ReadLine();
-                                    success = true;
+                                    c.Znacka = OverStringVstup($"Zadaj značku: ");                                    
                                     break;
                                 }
                             case 'T':
                                 {
-                                    Console.WriteLine($"Zadaj typ: ");
-                                    c.Typ = Console.ReadLine();
-                                    success = true;
+                                    c.Typ = OverStringVstup($"Zadaj typ: ");                                    
                                     break;
                                 }
                             case 'P':
                                 {                                    
-                                    c.Palivo = ChooseFuel();
-                                    success = true;
+                                    c.Palivo = ChooseFuel();                                    
                                     break;
                                 }
                             case 'C':
                                 {
-                                    Console.WriteLine($"Zadaj cenu auta: ");
-                                    c.CenaAuta = decimal.Parse(Console.ReadLine());
-                                    success = true;
+                                    c.CenaAuta = OverDecimalVstup($"Zadaj cenu auta: ");                                    
                                     break;
                                 }
                             case 'M':
                                 {
-                                    Console.WriteLine($"Zadaj mesto: ");
-                                    c.Mesto = Console.ReadLine();
-                                    success = true;
+                                    c.Mesto = OverStringVstup($"Zadaj mesto: ");                                    
                                     break;
                                 }
                             case 'D':
                                 {
-                                    Console.WriteLine($"Zadaj počet dverí: ");
-                                    c.PocetDveri = int.Parse(Console.ReadLine());
-                                    success = true;
+                                    c.PocetDveri = OverIntVstup($"Zadaj počet dverí: ");                                    
                                     break;
                                 }
                             case 'B':
@@ -577,21 +563,10 @@ namespace Autobazar
         }
         
         public static List<Car> FilterDataYear(List<Car> items)
-        {
-            bool success = false;
-            int rokOd;
-            int rokDo;
+        {            
             List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"Od roku výroby: ");
-                success = int.TryParse(Console.ReadLine(), out rokOd);
-            } while (!success);
-            do
-            {
-                Console.Write($"Do roku výroby: ");
-                success = int.TryParse(Console.ReadLine(), out rokDo);
-            } while (!success);
+            int rokOd = OverIntVstup($"Od roku výroby: ");
+            int rokDo = OverIntVstup($"Do roku výroby: ");            
             foreach (Car c in items)
             {
                 if (rokOd <= c.RokVyroby && c.RokVyroby <= rokDo)
@@ -604,21 +579,10 @@ namespace Autobazar
         }
 
         public static List<Car> FilterDataKm(List<Car> items)
-        {
-            bool success = false;
-            int kmOd;
-            int kmDo;
+        {            
             List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"KM od: ");
-                success = int.TryParse(Console.ReadLine(), out kmOd);
-            } while (!success);
-            do
-            {
-                Console.Write($"Km do: ");
-                success = int.TryParse(Console.ReadLine(), out kmDo);
-            } while (!success);
+            int kmOd = OverIntVstup($"KM od: ");
+            int kmDo = OverIntVstup($"KM od: ");            
             foreach (Car c in items)
             {
                 if (kmOd <= c.PocetKm && c.PocetKm <= kmDo)
@@ -631,21 +595,10 @@ namespace Autobazar
         }
 
         public static List<Car> FilterDataPrice(List<Car> items)
-        {
-            bool success = false;
-            decimal cenaOd;
-            decimal cenaDo;
+        {            
             List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"Cena auta od: ");
-                success = decimal.TryParse(Console.ReadLine(), out cenaOd);
-            } while (!success);
-            do
-            {
-                Console.Write($"Cena auta do: ");
-                success = decimal.TryParse(Console.ReadLine(), out cenaDo);
-            } while (!success);
+            decimal cenaOd = OverDecimalVstup($"Cena auta od: ");
+            decimal cenaDo = OverDecimalVstup($"Cena auta do: ");            
             foreach (Car c in items)
             {
                 if (cenaOd <= c.CenaAuta && c.CenaAuta <= cenaDo)
@@ -658,21 +611,10 @@ namespace Autobazar
         }
 
         public static List<Car> FilterDataDoor(List<Car> items)
-        {
-            bool success = false;
-            int dvereOd;
-            int dvereDo;
+        {            
             List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"Počet dverí od: ");
-                success = int.TryParse(Console.ReadLine(), out dvereOd);
-            } while (!success);
-            do
-            {
-                Console.Write($"Počet dverí do: ");
-                success = int.TryParse(Console.ReadLine(), out dvereDo);
-            } while (!success);
+            int dvereOd = OverIntVstup($"Počet dverí od: ");
+            int dvereDo = OverIntVstup($"Počet dverí do: ");            
             foreach (Car c in items)
             {
                 if (dvereOd <= c.PocetDveri && c.PocetDveri <= dvereDo)
@@ -685,19 +627,9 @@ namespace Autobazar
         }
 
         public static List<Car> FilterDataBrand(List<Car> items)
-        {
-            bool success = false;
-            string znackaAuta = "";
-            List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"Zadaj značku/značky áut a oddeľte ich čiakou:: ");
-                do
-                {
-                    znackaAuta = Console.ReadLine();
-                } while (znackaAuta == "");
-                success = true;
-            } while (!success);
+        {                       
+            List<Car> filteredCar = new List<Car>();            
+            string znackaAuta = OverStringVstup($"Zadaj značku/značky áut a oddeľte ich čiakou: ");
             znackaAuta = znackaAuta.Replace(" ", "");
             var values = znackaAuta.Split(',');
             foreach (Car c in items)
@@ -716,19 +648,9 @@ namespace Autobazar
         }
 
         public static List<Car> FilterDataType(List<Car> items)
-        {
-            bool success = false;
-            string typAuta = "";
-            List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"Zadaj typ/typy áut a oddeľte ich čiakou: ");
-                do
-                {
-                    typAuta = Console.ReadLine();
-                } while (typAuta == "");
-                success = true;
-            } while (!success);
+        {            
+            List<Car> filteredCar = new List<Car>();            
+            string typAuta = OverStringVstup($"Zadaj typ/typy áut a oddeľte ich čiakou: ");
             typAuta = typAuta.Replace(" ", "");
             var values = typAuta.Split(',');
             foreach (Car c in items)
@@ -747,20 +669,9 @@ namespace Autobazar
         }
 
         public static List<Car> FilterDataCity(List<Car> items)
-        {
-
-            bool success = false;
-            string mesto = "";
-            List<Car> filteredCar = new List<Car>();
-            do
-            {
-                Console.Write($"Zadajte mesto/mestá a oddeľte ich čiarkou: ");
-                do
-                {
-                    mesto = Console.ReadLine();
-                } while (mesto== "");
-                success = true;
-            } while (!success);
+        {                       
+            List<Car> filteredCar = new List<Car>();            
+            string mesto = OverStringVstup($"Zadajte mesto/mestá a oddeľte ich čiarkou: ");
             mesto = mesto.Replace(" ", "");
             var values = mesto.Split(',');
             foreach (Car c in items)
