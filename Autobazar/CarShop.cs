@@ -491,64 +491,55 @@ namespace Autobazar
                 switch (vyber)
                 {
                     case 'R':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataYear(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataYear(carFilter);
                             success = false;
                             continue;
                         }
                     case 'K':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataKm(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataKm(carFilter);
                             success = false;
                             continue;                            
                         }
                     case 'Z':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataBrand(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataBrand(carFilter);
                             success = false;
                             continue;
                         }
                     case 'T':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataType(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataType(carFilter);
                             success = false;
                             continue;
                         }
                     case 'P':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataFuel(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataFuel(carFilter);
                             success = false;
                             continue;
                         }
                     case 'C':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataPrice(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataPrice(carFilter);
                             success = false;
                             continue;
                         }
                     case 'M':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataCity(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataCity(carFilter);
                             success = false;
                             continue;
                         }
                     case 'D':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataDoor(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataDoor(carFilter);
                             success = false;
                             continue;
                         }
                     case 'H':
-                        {
-                            //carFilter = RemoveWrongCar(FilterDataDamage(carFilter), carFilter);
+                        {                            
                             carFilter = FilterDataDamage(carFilter);
                             success = false;
                             continue;
@@ -850,25 +841,6 @@ namespace Autobazar
 
             }
             return filteredCar;
-        }
-
-        public static List<Car> RemoveWrongCar(List<Car> goodCars,List<Car> cars)
-        {
-            List<Car> filterCars = new List<Car>();
-            foreach(Car w in goodCars)
-            {
-                foreach(Car c in cars)
-                {
-                    if (c.ID == w.ID)
-                    {
-
-                        filterCars.Add(c);
-                    }                 
-                    
-                }
-            }
-            return filterCars;
-        }
+        }        
     }
-
 }
