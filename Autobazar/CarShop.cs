@@ -14,7 +14,8 @@ namespace Autobazar
         public static void MainMenu()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"||||********AUTOBAZAR********||||");
+            sb.AppendLine($"||||***********AUTOBAZAR*************||||");
+            sb.AppendLine($"-----------------------------------------");
             sb.AppendLine($"P => Pridaj nové auto.");
             sb.AppendLine($"Z => Zmeň údaje o aute.");
             sb.AppendLine($"O => Odstráň auto.");
@@ -22,7 +23,10 @@ namespace Autobazar
             sb.AppendLine($"F => Vytvor filter.");
             sb.AppendLine($"N => Načítaj zoznam áut bazáru zo súboru.");
             sb.AppendLine($"U => Ulož zoznam áut bazáru do súboru.");
-            sb.AppendLine($"Q => Ukonči program.");
+            sb.AppendLine($"-----------------------------------------");
+            sb.AppendLine($"*****************************************");
+            sb.AppendLine($"!!!!!!!!!!Q => Ukonči program!!!!!!!!!!!!");
+            sb.AppendLine($"*****************************************");
             Console.WriteLine(sb.ToString());
         }
 
@@ -80,7 +84,8 @@ namespace Autobazar
         public static string RepairDataMenu()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Ktoré údaje chcete zmeniť na aute?");
+            sb.AppendLine($"-----Ktoré údaje chcete zmeniť na aute?-----");
+            sb.AppendLine($"--------------------------------------------");
             sb.AppendLine($"R => Rok výroby");
             sb.AppendLine($"K => Počet najazdených KM");
             sb.AppendLine($"Z => Značka");
@@ -89,10 +94,14 @@ namespace Autobazar
             sb.AppendLine($"C => Cena");
             sb.AppendLine($"M => Mesto");
             sb.AppendLine($"D => Počet dverí");
-            sb.AppendLine($"**************************");
-            sb.AppendLine($"B => Vrátiť späť do menu");
-            sb.AppendLine($"**************************");
-            sb.Append($"Výber z možností (R, K, Z, T, P, C, M, D) : ");
+            sb.AppendLine($"H => Havarované");
+            sb.AppendLine($"--------------------------------------------");
+            sb.AppendLine($"********************************************");
+            sb.AppendLine($"B => Vrátiť späť do hlavného menu");
+            sb.AppendLine($"********************************************");
+            sb.AppendLine($"--------------------------------------------");
+            sb.AppendLine($"Výber z možností (R, K, Z, T, P, C, M, D) : ");
+            sb.AppendLine($"--------------------------------------------");
             return sb.ToString();
         }
 
@@ -151,6 +160,11 @@ namespace Autobazar
                                     c.PocetDveri = OverIntVstup($"Zadaj počet dverí: ");                                    
                                     break;
                                 }
+                            case 'H':
+                                {
+                                    c.JeHavarovane = IsDamage();
+                                    break;
+                                }
                             case 'B':
                                 {                                    
                                     success = true;
@@ -177,7 +191,9 @@ namespace Autobazar
                 sb.AppendLine($"D => Diesel");
                 sb.AppendLine($"B => Benzin");
                 sb.AppendLine($"P => Plyn");
+                sb.AppendLine($"-------------------------");
                 sb.AppendLine($"Vyber z možností (D,B,P):");
+                sb.AppendLine($"-------------------------");
                 Console.Write(sb.ToString());
                 char vyber = Console.ReadKey().KeyChar;
                 vyber = Char.ToUpper(vyber);
@@ -216,7 +232,10 @@ namespace Autobazar
             bool success =false;
             do
             {
-                Console.Write($"Je auto havarované?\nVýber z možností: Y/N\n");
+                Console.WriteLine($"Je auto havarované?");
+                Console.WriteLine($"---------------------");
+                Console.WriteLine($"Výber z možností: Y/N");
+                Console.WriteLine($"---------------------");
                 char vyber = Console.ReadKey().KeyChar;
                 vyber = Char.ToUpper(vyber);
                 switch (vyber)
@@ -333,7 +352,11 @@ namespace Autobazar
                     Car newCar = new Car(int.Parse(values[0]), int.Parse(values[1]), int.Parse(values[2]), values[3], values[4], (TypPaliva)Enum.Parse(typeof(TypPaliva), values[5]), decimal.Parse(values[6]), values[7], int.Parse(values[8]), bool.Parse(values[9]));
                     cars.Add(newCar);
                 }
-                Console.WriteLine($"Data was loaded.\nPre pokračovanie stlačte klávesu.");
+                Console.WriteLine($"---------------------------------------------------");
+                Console.WriteLine($"----------------Data was loaded--------------------");
+                Console.WriteLine($"---------------------------------------------------");
+                Console.WriteLine($"--------Pre pokračovanie stlačte klávesu.----------");
+                Console.WriteLine($"---------------------------------------------------");
                 Console.ReadKey();
             }
             else
@@ -360,14 +383,7 @@ namespace Autobazar
             int pocet = cars.Count();
             if (pocet > 0)
             {
-                id = cars[pocet-1].ID + 1;
-                //foreach (Car c in cars)
-                //{
-                //    if (c.ID >= 1)
-                //    {
-                //        id = ;
-                //    }
-                //}
+                id = cars[pocet-1].ID + 1;               
             }           
             return id;
         }
@@ -379,7 +395,9 @@ namespace Autobazar
             
             do
             {
-                Console.Write($"Zadaj id auta, v ktorom chceš zmeniť údaje : ");
+                Console.WriteLine($"------------------------------------------");
+                Console.WriteLine($"Zadaj id auta, v ktorom chceš zmeniť údaje : ");
+                Console.WriteLine($"------------------------------------------");
                 success = int.TryParse(Console.ReadLine(), out idAuta);
                 foreach (Car c in cars)
                 {
@@ -395,7 +413,13 @@ namespace Autobazar
                     }
 
                 }
-                
+                if (!success)
+                {
+                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Console.WriteLine($"Auto so zadaným id neexistuje! Zadaj správne id.");
+                    Console.WriteLine($"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                }               
+
             } while (!success);
            
             //do
