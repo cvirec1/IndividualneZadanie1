@@ -1,2 +1,3 @@
 # IndividualneZadanie1
-Ukladanie je natvrdo nastavené do priečinka na adresu "D:\Transformers\Carshop.txt"
+Ukladanie a načítanie je natvrdo nastavené na adresu "D:\Carshop.txt"
+V súbore Carshop.txt sú vytvorené auta pre import je potrebné ho umiestniť na disk D:\.
