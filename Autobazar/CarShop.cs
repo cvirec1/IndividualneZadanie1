@@ -10,7 +10,6 @@ namespace Autobazar
 {
     static class CarShop
     {
-
         public static void MainMenu()
         {
             StringBuilder sb = new StringBuilder();
@@ -61,22 +60,44 @@ namespace Autobazar
         {
             int number;
             bool success = false;
+            int i = 1;
             do
             {
                 Console.Write(popis);
                 success = int.TryParse(Console.ReadLine(), out number);
+                if (number < 0)
+                {
+                    Console.WriteLine("Zadaj väčšie rovné 0");
+                    success = false;
+                    i++;
+                    if (i > 2)
+                    {
+                        Console.WriteLine("!!Som ti povedal že máš dať väčšie!!");
+                    }
+                }
             } while (!success);
             return number;
         }
 
         public static decimal OverDecimalVstup(string popis)
         {
-            decimal number;
+            decimal number;          
             bool success = false;
+            int i = 1;
             do
             {
                 Console.Write(popis);
                 success = decimal.TryParse(Console.ReadLine(), out number);
+                if (number < 0)
+                {                    
+                    Console.WriteLine("Bohaci zadaj väčšie rovné 0");
+                    success = false;
+                    i++;
+                    if (i > 2)
+                    {
+                        Console.WriteLine("!!Som ti povedal že máš dať väčšie!!");
+                    }
+                }
             } while (!success);
             return number;
         }
