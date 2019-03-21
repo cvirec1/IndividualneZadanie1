@@ -1,0 +1,18 @@
+1	2010	154	skoda	fabia	benzin	1545	varin	5	False
+2	2011	2115165	fiat	punto	diesel	156465	zilina	3	True
+3	2015	15626	bmw	fabia	benzin	154546	varin	5	False
+4	2018	12414	mercedes	benz	plyn	56452	bratislava	5	False
+5	2010	10001	opel	astra	plyn	15000	kosice	5	True
+6	1999	259063	citroen	berlingo	diesel	2630	poprad	3	False
+7	2010	15020	citroen	c4	diesel	51645	zilina	5	False
+8	2015	15633	peugeot	3008	diesel	15131	zilina	5	False
+9	2016	15646	hyundai	i30	benzin	6598	kosice	5	False
+10	1999	154	skoda	fabia	benzin	15454	varin	5	False
+11	2012	21151	fiat	punto	diesel	15645	zilina	3	True
+12	2015	1562	bmw	fabia	benzin	154546	varin	5	False
+13	2018	1241	mercedes	benz	plyn	56452	bratislava	5	False
+14	2010	1000	opel	astra	plyn	15000	kosice	5	True
+15	1999	25963	citroen	berlingo	diesel	2630	poprad	3	False
+16	2010	1520	citroen		diesel	51645	zilina	5	False
+17	2015	356433	peugeot	3008	diesel	15131	zilina	5	False
+18	2016	26416	hyundai	i30	benzin	6598	kosice	5	False
