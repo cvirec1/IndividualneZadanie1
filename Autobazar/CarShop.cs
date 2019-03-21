@@ -863,11 +863,7 @@ namespace Autobazar
                     {
 
                         filterCars.Add(c);
-                    }
-                    else
-                    {
-                        //filterCars.Add(c);
-                    }
+                    }                 
                     
                 }
             }
