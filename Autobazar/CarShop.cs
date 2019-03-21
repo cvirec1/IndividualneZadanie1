@@ -492,64 +492,64 @@ namespace Autobazar
                 {
                     case 'R':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataYear(cars), carFilter);
-                            carFilter = FilterDataYear(cars);
+                            //carFilter = RemoveWrongCar(FilterDataYear(carFilter), carFilter);
+                            carFilter = FilterDataYear(carFilter);
                             success = false;
                             continue;
                         }
                     case 'K':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataKm(cars), carFilter);
-                            carFilter = FilterDataKm(cars);
+                            //carFilter = RemoveWrongCar(FilterDataKm(carFilter), carFilter);
+                            carFilter = FilterDataKm(carFilter);
                             success = false;
                             continue;                            
                         }
                     case 'Z':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataBrand(cars), carFilter);
-                            carFilter = FilterDataBrand(cars);
+                            //carFilter = RemoveWrongCar(FilterDataBrand(carFilter), carFilter);
+                            carFilter = FilterDataBrand(carFilter);
                             success = false;
                             continue;
                         }
                     case 'T':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataType(cars), carFilter);
-                            carFilter = FilterDataType(cars);
+                            //carFilter = RemoveWrongCar(FilterDataType(carFilter), carFilter);
+                            carFilter = FilterDataType(carFilter);
                             success = false;
                             continue;
                         }
                     case 'P':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataFuel(cars), carFilter);
-                            carFilter = FilterDataFuel(cars);
+                            //carFilter = RemoveWrongCar(FilterDataFuel(carFilter), carFilter);
+                            carFilter = FilterDataFuel(carFilter);
                             success = false;
                             continue;
                         }
                     case 'C':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataPrice(cars), carFilter);
-                            carFilter = FilterDataPrice(cars);
+                            //carFilter = RemoveWrongCar(FilterDataPrice(carFilter), carFilter);
+                            carFilter = FilterDataPrice(carFilter);
                             success = false;
                             continue;
                         }
                     case 'M':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataCity(cars), carFilter);
-                            carFilter = FilterDataCity(cars);
+                            //carFilter = RemoveWrongCar(FilterDataCity(carFilter), carFilter);
+                            carFilter = FilterDataCity(carFilter);
                             success = false;
                             continue;
                         }
                     case 'D':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataDoor(cars), carFilter);
-                            carFilter = FilterDataDoor(cars);
+                            //carFilter = RemoveWrongCar(FilterDataDoor(carFilter), carFilter);
+                            carFilter = FilterDataDoor(carFilter);
                             success = false;
                             continue;
                         }
                     case 'H':
                         {
-                            //carFilter = RemoveWrongCar(FilterDataDamage(cars), carFilter);
-                            carFilter = FilterDataDamage(cars);
+                            //carFilter = RemoveWrongCar(FilterDataDamage(carFilter), carFilter);
+                            carFilter = FilterDataDamage(carFilter);
                             success = false;
                             continue;
                         }

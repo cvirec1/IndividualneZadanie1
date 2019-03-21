@@ -10,7 +10,7 @@ namespace Autobazar
     {
         static void Main(string[] args)
         {
-            string path = @"D:\Transformers\Carshop.txt";
+            string path = @"D:\Carshop.txt";
             List<Car> Cars = new List<Car>();
             CarShop.ReadFile(Cars, path);
             bool quit = false;
