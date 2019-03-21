@@ -19,8 +19,8 @@ namespace Autobazar
             sb.AppendLine($"P => Pridaj nové auto.");
             sb.AppendLine($"Z => Zmeň údaje o aute.");
             sb.AppendLine($"O => Odstráň auto.");
-            sb.AppendLine($"V => Vypíš zoznam áut v bazáry.");
-            sb.AppendLine($"F => Vytvor filter.");
+            sb.AppendLine($"V => Vypíš zoznam áut bazáru.");
+            sb.AppendLine($"F => Filtruj dáta bazáru.");
             sb.AppendLine($"N => Načítaj zoznam áut bazáru zo súboru.");
             sb.AppendLine($"U => Ulož zoznam áut bazáru do súboru.");
             sb.AppendLine($"-----------------------------------------");
