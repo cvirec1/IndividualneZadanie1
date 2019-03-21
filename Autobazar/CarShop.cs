@@ -27,52 +27,53 @@ namespace Autobazar
         }
 
         public static Car AddCar(int idAuta)
-        {
-            string znackaAuta;
-            string typAuta;
-            bool success;
-            bool havarovane;
-            int rok;
-            int pocetNajKM;
-            decimal cena;
-            int pocetDveriAuta;
-            TypPaliva palivoTyp;            
-            Console.Write($"Značka: ");
-            do
-            {
-                znackaAuta = Console.ReadLine();
-            } while (znackaAuta == "");
-            do { 
-            Console.Write($"Typ: ");
-                typAuta = Console.ReadLine();
-            } while (typAuta == "");
-            do
-            {
-                Console.Write($"Rok výroby: ");
-                success = int.TryParse(Console.ReadLine(), out rok);
-            } while (!success);
-            do
-            {
-                Console.Write($"Počet najazdených KM: ");
-                success = int.TryParse(Console.ReadLine(), out pocetNajKM);
-            } while (!success);
-            
-            palivoTyp = ChooseFuel();
-            do
-            {
-                Console.Write($"\nCena auta: ");
-                success = decimal.TryParse(Console.ReadLine(), out cena);
-            } while (!success);
-            Console.Write($"Zadaj mesto: ");
-            string mestoPredaja = Console.ReadLine();
-            do
-            {
-                Console.Write($"Počet dverí: ");
-                success = int.TryParse(Console.ReadLine(), out pocetDveriAuta);
-            } while (!success);            
-            havarovane = IsDamage();
-            Car newCar = new Car(idAuta, rok, pocetNajKM, znackaAuta, typAuta, palivoTyp, cena, mestoPredaja, pocetDveriAuta, havarovane);            
+        {           
+            string znackaAuta = OverStringVstup($"Značka: ");
+            string typAuta = OverStringVstup($"Typ: ");
+            int rok = OverIntVstup($"Rok výroby: ");
+            int pocetKm = OverIntVstup($"Počet najazdených KM: ");            
+            TypPaliva palivoTyp = ChooseFuel();
+            decimal cena = OverDecimalVstup($"\nCena auta: ");            
+            string mesto = OverStringVstup($"Zadaj mesto: ");            
+            int pocetDveri = OverIntVstup($"Počet dverí: ");                     
+            bool havarovane = IsDamage();
+            Car newCar = new Car(idAuta, rok, pocetKm, znackaAuta, typAuta, palivoTyp, cena, mesto, pocetDveri, havarovane);            
             return newCar;
+        }
+
+        public static string OverStringVstup(string popis)
+        {
+            string text;
+            do
+            {
+                Console.Write(popis);
+                text = Console.ReadLine();
+            } while (text == "");
+            return text;
+        }
+
+        public static int OverIntVstup(string popis)
+        {
+            int number;
+            bool success = false;
+            do
+            {
+                Console.Write(popis);
+                success = int.TryParse(Console.ReadLine(), out number);
+            } while (!success);
+            return number;
+        }
+
+        public static decimal OverDecimalVstup(string popis)
+        {
+            decimal number;
+            bool success = false;
+            do
+            {
+                Console.Write(popis);
+                success = decimal.TryParse(Console.ReadLine(), out number);
+            } while (!success);
+            return number;
         }
 
         public static string RepairDataMenu()
