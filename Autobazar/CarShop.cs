@@ -494,7 +494,6 @@ namespace Autobazar
                         {
                             //carFilter = RemoveWrongCar(FilterDataYear(cars), carFilter);
                             carFilter = FilterDataYear(cars);
-
                             success = false;
                             continue;
                         }
