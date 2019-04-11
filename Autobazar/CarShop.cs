@@ -29,19 +29,32 @@ namespace Autobazar
             Console.WriteLine(sb.ToString());
         }
 
-        public static Car AddCar(int idAuta)
-        {           
-            string znackaAuta = OverStringVstup($"Značka: ");
-            string typAuta = OverStringVstup($"Typ: ");
-            int rok = OverIntVstup($"Rok výroby: ");
-            int pocetKm = OverIntVstup($"Počet najazdených KM: ");            
-            TypPaliva palivoTyp = ChooseFuel();
-            decimal cena = OverDecimalVstup($"\nCena auta: ");            
-            string mesto = OverStringVstup($"Zadaj mesto: ");            
-            int pocetDveri = OverIntVstup($"Počet dverí: ");                     
-            bool havarovane = IsDamage();
-            Car newCar = new Car(idAuta, rok, pocetKm, znackaAuta, typAuta, palivoTyp, cena, mesto, pocetDveri, havarovane);            
-            return newCar;
+        public static Car AddCar()
+        {
+            Car car = new Car();
+            car.Znacka = OverStringVstup($"Značka: ");
+            car.Typ = OverStringVstup($"Typ: ");
+            car.RokVyroby = OverIntVstup($"Rok výroby: ");
+            car.PocetKm = OverIntVstup($"Počet najazdených KM: ");
+            car.Palivo = ChooseFuel();
+            car.CenaAuta = OverDecimalVstup($"\nCena auta: ");
+            car.Mesto = OverStringVstup($"Zadaj mesto: ");
+            car.PocetDveri = OverIntVstup($"Počet dverí: ");
+            car.JeHavarovane = IsDamage();
+            //string znackaAuta = OverStringVstup($"Značka: ");
+            //string typAuta = OverStringVstup($"Typ: ");
+            //int rok = OverIntVstup($"Rok výroby: ");
+            //int pocetKm = OverIntVstup($"Počet najazdených KM: ");            
+            //TypPaliva palivoTyp = ChooseFuel();
+            //decimal cena = OverDecimalVstup($"\nCena auta: ");            
+            //string mesto = OverStringVstup($"Zadaj mesto: ");            
+            //int pocetDveri = OverIntVstup($"Počet dverí: ");                     
+            //bool havarovane = IsDamage();
+            CarRepository rep = new CarRepository();
+            car.ID = rep.AddNewCar(car);
+             
+            //Car newCar = new Car(idAuta, rok, pocetKm, znackaAuta, typAuta, palivoTyp, cena, mesto, pocetDveri, havarovane);            
+            return car;
         }
 
         public static string OverStringVstup(string popis)
@@ -118,7 +131,7 @@ namespace Autobazar
             sb.AppendLine($"H => Havarované");
             sb.AppendLine($"--------------------------------------------");
             sb.AppendLine($"********************************************");
-            sb.AppendLine($"B => Vrátiť späť do hlavného menu");
+            sb.AppendLine($"G => Potvrď zmeny");
             sb.AppendLine($"********************************************");
             sb.AppendLine($"--------------------------------------------");
             sb.AppendLine($"Výber z možností (R, K, Z, T, P, C, M, D) : ");
@@ -128,73 +141,79 @@ namespace Autobazar
 
         public static void RepairData(List<Car> cars,int idAuta)
         {
-            bool success =false;
+            bool success =false;            
             do
             {
                 foreach (Car c in cars)
                 {
                     if (c.ID == idAuta)
-                    {                         
-                        Console.WriteLine(RepairDataMenu());
-                        char vyber = Console.ReadKey().KeyChar;
-                        vyber = Char.ToUpper(vyber);
-                        Console.WriteLine();
-                        switch (vyber)
+                    {
+                        do
                         {
-                            case 'R':
-                                {                                    
-                                    c.RokVyroby = OverIntVstup($"Zadaj rok výroby: ");                                    
-                                    break;
-                                }
-                            case 'K':
-                                {                                    
-                                    c.PocetKm = OverIntVstup($"Zadaj počet km: ");                                    
-                                    break;
-                                }
-                            case 'Z':
-                                {
-                                    c.Znacka = OverStringVstup($"Zadaj značku: ");                                    
-                                    break;
-                                }
-                            case 'T':
-                                {
-                                    c.Typ = OverStringVstup($"Zadaj typ: ");                                    
-                                    break;
-                                }
-                            case 'P':
-                                {                                    
-                                    c.Palivo = ChooseFuel();                                    
-                                    break;
-                                }
-                            case 'C':
-                                {
-                                    c.CenaAuta = OverDecimalVstup($"Zadaj cenu auta: ");                                    
-                                    break;
-                                }
-                            case 'M':
-                                {
-                                    c.Mesto = OverStringVstup($"Zadaj mesto: ");                                    
-                                    break;
-                                }
-                            case 'D':
-                                {
-                                    c.PocetDveri = OverIntVstup($"Zadaj počet dverí: ");                                    
-                                    break;
-                                }
-                            case 'H':
-                                {
-                                    c.JeHavarovane = IsDamage();
-                                    break;
-                                }
-                            case 'B':
-                                {                                    
-                                    success = true;
-                                    break;
-                                }
+                            Console.WriteLine(RepairDataMenu());
+                            char vyber = Console.ReadKey().KeyChar;
+                            vyber = Char.ToUpper(vyber);
+                            Console.WriteLine();
+                            switch (vyber)
+                            {
+                                case 'R':
+                                    {
+                                        c.RokVyroby = OverIntVstup($"Zadaj rok výroby: ");
+                                        continue;
+                                    }
+                                case 'K':
+                                    {
+                                        c.PocetKm = OverIntVstup($"Zadaj počet km: ");
+                                        continue;
+                                    }
+                                case 'Z':
+                                    {
+                                        c.Znacka = OverStringVstup($"Zadaj značku: ");
+                                        continue;
+                                    }
+                                case 'T':
+                                    {
+                                        c.Typ = OverStringVstup($"Zadaj typ: ");
+                                        continue;
+                                    }
+                                case 'P':
+                                    {
+                                        c.Palivo = ChooseFuel();
+                                        continue;
+                                    }
+                                case 'C':
+                                    {
+                                        c.CenaAuta = OverDecimalVstup($"Zadaj cenu auta: ");
+                                        continue;
+                                    }
+                                case 'M':
+                                    {
+                                        c.Mesto = OverStringVstup($"Zadaj mesto: ");
+                                        continue;
+                                    }
+                                case 'D':
+                                    {
+                                        c.PocetDveri = OverIntVstup($"Zadaj počet dverí: ");
+                                        continue;
+                                    }
+                                case 'H':
+                                    {
+                                        c.JeHavarovane = IsDamage();
+                                        continue;
+                                    }
+                                case 'G':
+                                    {
+                                        CarRepository carRepository = new CarRepository();
+                                        carRepository.UpdateCar(c);
+                                        success = true;
+                                        break;
+                                    }
 
-                            default:
-                                continue;
-                        }
+                                default:
+                                    continue;
+                            }
+                        } while (!success);
+                        
                     }
                 }
             } while (!success);
@@ -282,7 +301,7 @@ namespace Autobazar
 
         }
 
-        public static void RemoveCar(List<Car> cars)
+        public static int RemoveCar(List<Car> cars)
         {
             bool success;
             int idAuta;
@@ -293,7 +312,7 @@ namespace Autobazar
             } while (!success);
             foreach (Car c in cars)
             {
-                if(c.ID == idAuta)
+                if (c.ID == idAuta)
                 {
                     cars.Remove(c);
                     Console.WriteLine($"Auto bolo zmazané");
@@ -304,6 +323,7 @@ namespace Autobazar
                     Console.WriteLine($"Auto so zadaným ID nie je v bazáre");
                 }
             }
+            return idAuta;
 
         }
         /// <summary>

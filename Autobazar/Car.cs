@@ -8,8 +8,7 @@ namespace Autobazar
 {
     class Car
     {
-
-        public int ID { get; }
+        public int ID { get; set; }
         public int RokVyroby { get; set; }
         public int PocetKm { get; set; }
         public string Znacka { get; set; }
@@ -19,6 +18,11 @@ namespace Autobazar
         public string Mesto { get; set; }
         public int PocetDveri { get; set; }
         public bool JeHavarovane { get; set; }
+
+        public Car()
+        {
+
+        }
 
         public Car(int iD, int rokVyroby, int pocetKm, string znacka, string typ, TypPaliva palivo, decimal cenaAuta, string mesto, int pocetDveri, bool jeHavarovane)
         {

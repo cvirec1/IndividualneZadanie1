@@ -11,8 +11,9 @@ namespace Autobazar
         static void Main(string[] args)
         {
             string path = @"D:\Carshop.txt";
-            List<Car> Cars = new List<Car>();
-            CarShop.ReadFile(Cars, path);
+            CarRepository carRepository = new CarRepository();
+            List<Car> Cars = carRepository.GetAll();
+            //CarShop.ReadFile(Cars, path);
             bool quit = false;
             do
             {
@@ -28,7 +29,8 @@ namespace Autobazar
                 {
                     case 'P':
                         {
-                            Cars.Add(CarShop.AddCar(CarShop.GenerateID(Cars)));
+                            Cars.Add(CarShop.AddCar());
+                            //Cars.Add(CarShop.AddCar(CarShop.GenerateID(Cars)));
                             break;
                         }
                     case 'Z':
@@ -39,7 +41,8 @@ namespace Autobazar
                         }
                     case 'O':
                         {
-                            CarShop.RemoveCar(Cars);
+                            carRepository.DeleteCar(CarShop.RemoveCar(Cars));
+                            //CarShop.RemoveCar(Cars);
                             CarShop.WriteData(Cars);
                             Console.ReadKey();
                             break;
